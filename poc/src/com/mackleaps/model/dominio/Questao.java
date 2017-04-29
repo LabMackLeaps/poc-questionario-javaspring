@@ -4,7 +4,7 @@ public class Questao {
 
 	private Integer idQuestao;
 	private String pergunta;
-	private Integer idCateogira;
+	private Integer idCategoria;
 	
 	public Integer getIdQuestao() {
 		return idQuestao;
@@ -20,11 +20,11 @@ public class Questao {
 		this.pergunta = pergunta;
 	}
 	
-	public Integer getIdCateogira() {
-		return idCateogira;
+	public Integer getIdCategoria() {
+		return idCategoria;
 	}
-	public void setIdCateogira(Integer idCateogira) {
-		this.idCateogira = idCateogira;
+	public void setIdCategoria(Integer idCategoria) {
+		this.idCategoria = idCategoria;
 	}
 	
 }
