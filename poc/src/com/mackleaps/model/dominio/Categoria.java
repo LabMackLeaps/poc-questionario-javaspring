@@ -3,7 +3,7 @@ package com.mackleaps.model.dominio;
 public class Categoria {
 
 	private Integer idCategoria;
-	private String tituloCateogira;
+	private String tituloCategoria;
 	private String descricaoCategoria;
 	private Integer idQuestionario;
 	
@@ -14,11 +14,11 @@ public class Categoria {
 		this.idCategoria = idCategoria;
 	}
 	
-	public String getTituloCateogira() {
-		return tituloCateogira;
+	public String getTituloCategoria() {
+		return tituloCategoria;
 	}
-	public void setTituloCateogira(String tituloCateogira) {
-		this.tituloCateogira = tituloCateogira;
+	public void setTituloCategoria(String tituloCategoria) {
+		this.tituloCategoria = tituloCategoria;
 	}
 	
 	public String getDescricaoCategoria() {
