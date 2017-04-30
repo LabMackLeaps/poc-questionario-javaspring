@@ -22,17 +22,17 @@ public class JdbcTemplateQuestionario implements IQuestionarioDao{
 	}
 
 	@Override
-	public void createQuestionario(Questionario c) {
+	public void createQuestionario(Questionario q) {
 		String queryInsercao = "INSERT INTO tbQuestionario (titulo, descricao) VALUES (?, ?)";
-		jdbcTemplateObject.update(queryInsercao, c.getTituloQuestionario(), 
-												 c.getDescricaoQuestionario());
+		jdbcTemplateObject.update(queryInsercao, q.getTituloQuestionario(), 
+												 q.getDescricaoQuestionario());
 		
 	}
 
 	@Override
 	public Questionario getQuestionario(Integer idQuestionario) {
 		String queryGet = "SELECT * FROM tbQuestionario WHERE idQuestionario = ?";
-		Questionario q = jdbcTemplateObject.queryForObject(queryGet, new QuestionarioMapper());
+		Questionario q = jdbcTemplateObject.queryForObject(queryGet, new Object[]{idQuestionario}, new QuestionarioMapper());
 		
 		return q;
 	}
@@ -53,11 +53,11 @@ public class JdbcTemplateQuestionario implements IQuestionarioDao{
 	}
 
 	@Override
-	public void updateQuestionario(Questionario c) {
+	public void updateQuestionario(Questionario q) {
 		String queryUpdate = "UPDATE tbQuestionario SET titulo = ?, descricao = ? WHERE idQuestionario = ?";
-		jdbcTemplateObject.update(queryUpdate, c.getTituloQuestionario(), 
-											   c.getDescricaoQuestionario(), 
-											   c.getIdQuestionario());
+		jdbcTemplateObject.update(queryUpdate, q.getTituloQuestionario(), 
+											   q.getDescricaoQuestionario(), 
+											   q.getIdQuestionario());
 		
 	}
 
@@ -71,8 +71,8 @@ public class JdbcTemplateQuestionario implements IQuestionarioDao{
 		public Questionario mapRow(ResultSet rs, int linha) throws SQLException {
 			Questionario q = new Questionario();
 			q.setIdQuestionario(rs.getInt("idQuestionario"));
-			q.setTituloQuestionario(rs.getString("tituloQuestionario"));
-			q.setDescricaoQuestionario(rs.getString("descricaoQuestionario"));
+			q.setTituloQuestionario(rs.getString("titulo"));
+			q.setDescricaoQuestionario(rs.getString("descricao"));
 						
 			return q;
 			

@@ -33,7 +33,7 @@ public class JdbcTemplateCategoria implements ICategoriaDao{
 	@Override
 	public Categoria getCategoria(Integer idCategoria) {
 		String queryGet = "SELECT * FROM tbCategoria WHERE idCategoria = ?";
-		Categoria c = jdbcTemplateObject.queryForObject(queryGet, new CategoriaMapper());
+		Categoria c = jdbcTemplateObject.queryForObject(queryGet, new Object[]{idCategoria}, new CategoriaMapper());
 		
 		return c;
 	}
@@ -72,9 +72,9 @@ public class JdbcTemplateCategoria implements ICategoriaDao{
 		public Categoria mapRow(ResultSet rs, int linha) throws SQLException {
 			Categoria c = new Categoria();
 			c.setIdCategoria(rs.getInt("idCategoria"));
-			c.setTituloCategoria(rs.getString("tituloCategoria"));
-			c.setDescricaoCategoria(rs.getString("descricaoCategoria"));
-			c.setIdCategoria(rs.getInt("idCategoria"));
+			c.setTituloCategoria(rs.getString("titulo"));
+			c.setDescricaoCategoria(rs.getString("descricao"));
+			c.setIdQuestionario(rs.getInt("idQuestionario"));
 						
 			return c;
 			

@@ -32,7 +32,7 @@ public class JdbcTemplateQuestao implements IQuestaoDao{
 	@Override
 	public Questao getQuestao(Integer idQuestao) {
 		String queryGet = "SELECT * FROM tbQuestao WHERE idQuestao = ?";
-		Questao q = jdbcTemplateObject.queryForObject(queryGet, new QuestaoMapper());
+		Questao q = jdbcTemplateObject.queryForObject(queryGet, new Object[]{idQuestao}, new QuestaoMapper());
 		
 		return q;
 	}
