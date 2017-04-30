@@ -6,6 +6,13 @@ public class Questionario {
 	private String tituloQuestionario;
 	private String descricaoQuestionario;
 	
+	public Questionario(){ }
+	
+	public Questionario(String tituloQuestionario, String descricaoQuestionario){
+		this.tituloQuestionario = tituloQuestionario;
+		this.descricaoQuestionario = descricaoQuestionario;
+	}
+	
 	public Integer getIdQuestionario() {
 		return idQuestionario;
 	}

@@ -6,6 +6,13 @@ public class Questao {
 	private String pergunta;
 	private Integer idCategoria;
 	
+	public Questao() { }
+	
+	public Questao (String pergunta, Integer idCategoria){
+		this.pergunta = pergunta;
+		this.idCategoria = idCategoria;
+	}
+	
 	public Integer getIdQuestao() {
 		return idQuestao;
 	}

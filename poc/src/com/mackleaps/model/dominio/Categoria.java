@@ -7,6 +7,14 @@ public class Categoria {
 	private String descricaoCategoria;
 	private Integer idQuestionario;
 	
+	public Categoria(){ }
+	
+	public Categoria (String tituloCategoria, String descricaoCategoria, Integer idQuestionario){
+		this.tituloCategoria = tituloCategoria;
+		this.descricaoCategoria = descricaoCategoria;
+		this.idQuestionario = idQuestionario;
+	}
+	
 	public Integer getIdCategoria() {
 		return idCategoria;
 	}
