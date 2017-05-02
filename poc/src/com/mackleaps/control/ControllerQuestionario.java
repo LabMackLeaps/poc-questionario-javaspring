@@ -21,6 +21,7 @@ public class ControllerQuestionario extends HttpServlet{
 	private static final long serialVersionUID = 1L;
     public static final String LIST_QUESTIONARIOS = "/listQuestionario.jsp";
     public static final String INSERT_OR_EDIT = "/questionario.jsp";
+    public static final String LIST_CATEGORIAS_QUESTIONARIO = "/listCategoria.jsp";
     public JdbcTemplateQuestionario jdbcTempQuest;
 	
 	public ControllerQuestionario(){
@@ -33,8 +34,15 @@ public class ControllerQuestionario extends HttpServlet{
 		String forward = "";
 		String action = request.getParameter("action");
 		
+		//---------------------- LISTA CATEGORIAS -------------------
+		if (action.equalsIgnoreCase("listCategoria")){
+			forward = LIST_CATEGORIAS_QUESTIONARIO;
+			int idQuestionario = Integer.parseInt(request.getParameter("idQuestionario"));			
+			request.setAttribute("categorias", jdbcTempQuest.listCategoriasQuestionario(idQuestionario));
+			
+		}
 		//------------------------- DELETAR -------------------------
-		if (action.equalsIgnoreCase("delete")){
+		else if (action.equalsIgnoreCase("delete")){
 			forward = LIST_QUESTIONARIOS;			
 			int idQuestionario = Integer.parseInt(request.getParameter("idQuestionario"));
 			jdbcTempQuest.deleteQuestionario(idQuestionario);

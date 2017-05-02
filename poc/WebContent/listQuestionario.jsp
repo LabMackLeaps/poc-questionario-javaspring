@@ -23,10 +23,9 @@
                     <td><c:out value="${questionario.idQuestionario}" /></td>
                     <td><c:out value="${questionario.tituloQuestionario}" /></td>
                     <td><c:out value="${questionario.descricaoQuestionario}" /></td>
-                    <td><a
-                        href="ControllerQuestionario.do?action=edit&idQuestionario=<c:out value="${questionario.idQuestionario }"/>">Update</a></td>
-                    <td><a
-                        href="ControllerQuestionario.do?action=delete&idQuestionario=<c:out value="${questionario.idQuestionario }"/>">Deletar</a></td>
+                    <td><a href="ControllerQuestionario.do?action=listCategoria&idQuestionario=<c:out value="${questionario.idQuestionario }"/>">Categorias</a></td>
+                    <td><a href="ControllerQuestionario.do?action=edit&idQuestionario=<c:out value="${questionario.idQuestionario }"/>">Update</a></td>
+                    <td><a href="ControllerQuestionario.do?action=delete&idQuestionario=<c:out value="${questionario.idQuestionario }"/>">Deletar</a></td>
                 </tr>
             </c:forEach>
         </tbody>

@@ -17,7 +17,7 @@
                     readonly="readonly" placeholder="Questionario ID" />
             </div>
             <div>
-                <label for="tituloQuestionarieo">Título</label> <input type="text"
+                <label for="tituloQuestionario">Título</label> <input type="text"
                     name="tituloQuestionario" value="<c:out value="${questionario.tituloQuestionario}" />"
                     placeholder="Título" />
             </div>
@@ -26,9 +26,11 @@
                     name="descricaoQuestionario" value="<c:out value="${questionario.descricaoQuestionario}" />"
                     placeholder="Descrição" />
             </div>
+            <div>
                 <input type="submit" value="Submit" />
             </div> 
         </fieldset>
     </form>
+
 </body>
 </html>

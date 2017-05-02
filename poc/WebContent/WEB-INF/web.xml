@@ -7,6 +7,8 @@
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<!-- CONTROLLER QUESTIONARIO -->
 	<servlet>
 		<servlet-name>ControllerQuestionario</servlet-name>
 		<servlet-class>com.mackleaps.control.ControllerQuestionario</servlet-class>
@@ -14,6 +16,26 @@
 	<servlet-mapping>
 		<servlet-name>ControllerQuestionario</servlet-name>
 		<url-pattern>/ControllerQuestionario.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- CONTROLLER CATEGORIA -->
+	<servlet>
+		<servlet-name>ControllerCategoria</servlet-name>
+		<servlet-class>com.mackleaps.control.ControllerCategoria</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControllerCategoria</servlet-name>
+		<url-pattern>/ControllerCategoria.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- CONTROLLER QUESTAO -->
+	<servlet>
+		<servlet-name>ControllerQuestao</servlet-name>
+		<servlet-class>com.mackleaps.control.ControllerQuestao</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControllerQuestao</servlet-name>
+		<url-pattern>/ControllerQuestao.do</url-pattern>
 	</servlet-mapping>
 
 </web-app>
