@@ -5,6 +5,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.mackleaps.model.dominio.Categoria;
+import com.mackleaps.model.dominio.Questao;
 
 public interface ICategoriaDao {
 	
@@ -14,5 +15,6 @@ public interface ICategoriaDao {
 	public List<Categoria> listCategoria ();
 	public void deleteCategoria (Integer idCategoria);
 	public void updateCategoria (Categoria c);
+	public List<Questao> listQuestoesCategoria(Integer idCategoria);
 		
 }
