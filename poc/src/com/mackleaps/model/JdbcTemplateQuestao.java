@@ -32,7 +32,7 @@ public class JdbcTemplateQuestao implements IQuestaoDao{
 	@Override
 	public Questao getQuestao(Integer idQuestao) {
 		String queryGet = "SELECT * FROM tbQuestao WHERE idQuestao = ?";
-		Questao q = jdbcTemplateObject.queryForObject(queryGet, new Object[]{idQuestao}, new QuestaoMapper());
+		Questao q = jdbcTemplateObject.queryForObject(queryGet, new Object[]{idQuestao}, new MapperQuestao());
 		
 		return q;
 	}
@@ -40,7 +40,7 @@ public class JdbcTemplateQuestao implements IQuestaoDao{
 	@Override
 	public List<Questao> listQuestao() {
 		String queryLista = "SELECT * FROM tbQuestao";
-		List <Questao> questoes = jdbcTemplateObject.query(queryLista, new QuestaoMapper());
+		List <Questao> questoes = jdbcTemplateObject.query(queryLista, new MapperQuestao());
 		
 		return questoes;
 	}
@@ -57,25 +57,6 @@ public class JdbcTemplateQuestao implements IQuestaoDao{
 		String queryUpdate = "UPDATE tbQuestao SET pergunta = ? WHERE idQuestao = ?";
 		jdbcTemplateObject.update(queryUpdate, q.getPergunta(), 
 											   q.getIdQuestao());
-		
-	}
-
-	private class QuestaoMapper implements RowMapper<Questao>{
-
-		/**
-		 * Recebe um ResultSet e realiza o mapeamento do mesmo 
-		 * Transformando o rs passado como parametro em um objeto do tipo Categoria
-		 * */
-		@Override
-		public Questao mapRow(ResultSet rs, int linha) throws SQLException {
-			Questao q = new Questao();
-			q.setIdQuestao(rs.getInt("idQuestao"));
-			q.setPergunta(rs.getString("pergunta"));
-			q.setIdCategoria(rs.getInt("idCategoria"));
-			
-			return q;
-			
-		}
 		
 	}
 

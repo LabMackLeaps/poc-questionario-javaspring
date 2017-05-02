@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Título da página</title>
+<title>Welcome</title>
 </head>
 <body>
-
-	<%= "Something written in here :D" %>
-
+    <jsp:forward page="/ControllerQuestionario?action=listQuestionario"></jsp:forward>
 </body>
 </html>

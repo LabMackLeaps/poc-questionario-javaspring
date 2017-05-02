@@ -1,14 +1,12 @@
 package com.mackleaps.model;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 
+import com.mackleaps.model.dominio.Categoria;
 import com.mackleaps.model.dominio.Questionario;
 
 public class JdbcTemplateQuestionario implements IQuestionarioDao{
@@ -32,7 +30,7 @@ public class JdbcTemplateQuestionario implements IQuestionarioDao{
 	@Override
 	public Questionario getQuestionario(Integer idQuestionario) {
 		String queryGet = "SELECT * FROM tbQuestionario WHERE idQuestionario = ?";
-		Questionario q = jdbcTemplateObject.queryForObject(queryGet, new Object[]{idQuestionario}, new QuestionarioMapper());
+		Questionario q = jdbcTemplateObject.queryForObject(queryGet, new Object[]{idQuestionario}, new MapperQuestionario());
 		
 		return q;
 	}
@@ -40,7 +38,7 @@ public class JdbcTemplateQuestionario implements IQuestionarioDao{
 	@Override
 	public List<Questionario> listQuestionario() {
 		String queryLista = "SELECT * FROM tbQuestionario";
-		List <Questionario> questionarios = jdbcTemplateObject.query(queryLista, new QuestionarioMapper());
+		List <Questionario> questionarios = jdbcTemplateObject.query(queryLista, new MapperQuestionario());
 		
 		return questionarios;
 	}
@@ -61,23 +59,14 @@ public class JdbcTemplateQuestionario implements IQuestionarioDao{
 		
 	}
 
-	private class QuestionarioMapper implements RowMapper<Questionario>{
-
-		/**
-		 * Recebe um ResultSet e realiza o mapeamento do mesmo 
-		 * Transformando o rs passado como parametro em um objeto do tipo Questionario
-		 * */
-		@Override
-		public Questionario mapRow(ResultSet rs, int linha) throws SQLException {
-			Questionario q = new Questionario();
-			q.setIdQuestionario(rs.getInt("idQuestionario"));
-			q.setTituloQuestionario(rs.getString("titulo"));
-			q.setDescricaoQuestionario(rs.getString("descricao"));
-						
-			return q;
-			
-		}
+	@Override
+	public List<Categoria> listCategoriasQuestionario(Integer idQuestionario) {
+		String queryLista = "SELECT * FROM tbCategoria WHERE idQuestionario = ?";
+		List <Categoria> categorias = jdbcTemplateObject.query(queryLista, 
+															   new Object[]{idQuestionario}, 
+															   new MapperCategoria());
 		
+		return categorias;
 	}
-	
+
 }

@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.mackleaps.model.dominio.Categoria;
+import com.mackleaps.model.dominio.Questao;
 
 public class JdbcTemplateCategoria implements ICategoriaDao{	
 
@@ -33,7 +34,7 @@ public class JdbcTemplateCategoria implements ICategoriaDao{
 	@Override
 	public Categoria getCategoria(Integer idCategoria) {
 		String queryGet = "SELECT * FROM tbCategoria WHERE idCategoria = ?";
-		Categoria c = jdbcTemplateObject.queryForObject(queryGet, new Object[]{idCategoria}, new CategoriaMapper());
+		Categoria c = jdbcTemplateObject.queryForObject(queryGet, new Object[]{idCategoria}, new MapperCategoria());
 		
 		return c;
 	}
@@ -41,7 +42,7 @@ public class JdbcTemplateCategoria implements ICategoriaDao{
 	@Override
 	public List<Categoria> listCategoria() {
 		String queryLista = "SELECT * FROM tbCategoria";
-		List <Categoria> categorias = jdbcTemplateObject.query(queryLista, new CategoriaMapper());
+		List <Categoria> categorias = jdbcTemplateObject.query(queryLista, new MapperCategoria());
 		
 		return categorias;
 	}
@@ -62,23 +63,15 @@ public class JdbcTemplateCategoria implements ICategoriaDao{
 		
 	}
 
-	private class CategoriaMapper implements RowMapper<Categoria>{
-
-		/**
-		 * Recebe um ResultSet e realiza o mapeamento do mesmo 
-		 * Transformando o rs passado como parametro em um objeto do tipo Categoria
-		 * */
-		@Override
-		public Categoria mapRow(ResultSet rs, int linha) throws SQLException {
-			Categoria c = new Categoria();
-			c.setIdCategoria(rs.getInt("idCategoria"));
-			c.setTituloCategoria(rs.getString("titulo"));
-			c.setDescricaoCategoria(rs.getString("descricao"));
-			c.setIdQuestionario(rs.getInt("idQuestionario"));
-						
-			return c;
-			
-		}
+	@Override
+	public List<Questao> listQuestoesCategoria(Integer idCategoria) {
+		String queryLista = "SELECT * FROM tbQuestao WHERE idCategoria = ?";
+		List<Questao> questoes = jdbcTemplateObject.query(queryLista, 
+														  new Object[]{idCategoria}, 
+														  new MapperQuestao());
 		
+		return questoes;
 	}
+	
+
 }
